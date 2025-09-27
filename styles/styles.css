@@ -25,3 +25,125 @@
             color: #fff;
         }
 
+:root {
+    --cfondo-cont: #16213e;
+    --c-primario: #e94560;
+    --c-secundario: #c73866;
+    --c-morado: #574b90;
+    --ctexto-prin: #ffffff;
+    --tletra-titulo: 2.5rem;
+    --tletra-palabra: 1.8rem;
+    --tletra-botones: 1rem;
+    --tletra-mensajes: 1.2rem;
+    --tletra-reinicio: 1.1rem;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #1a1a2e;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 25px;
+    background-color: var(--cfondo-cont);
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(233, 69, 96, 0.5);
+    width: 100%;
+    max-width: 600px;
+}
+
+h1 {
+    color: var(--c-primario);
+    margin: 0;
+    font-size: var(--tletra-titulo);
+    text-align: center;
+}
+
+#hangman-canvas {
+    border: 2px solid var(--c-morado);
+    border-radius: 10px;
+    background-color: #0f1c30;
+}
+
+#contenedor-palabras {
+    letter-spacing: 10px;
+    color: var(--ctexto-prin);
+    height: 50px;
+    font-size: var(--tletra-palabra);
+    font-weight: bold;
+    text-align: center;
+}
+
+#tecla-contenedor {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(45px, 1fr));
+    gap: 8px;
+    width: 100%;
+    max-width: 500px;
+}
+
+.key-button {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #903749;
+    background-color: var(--c-morado);
+    color: var(--ctexto-prin);
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+    font-size: var(--tletra-botones);
+    font-weight: bold;
+}
+
+.key-button:hover:not(:disabled) {
+    background-color: var(--c-secundario);
+    transform: scale(1.1);
+}
+
+.key-button:disabled {
+    background-color: #3a2d3f;
+    color: #6a6a6a;
+    cursor: not-allowed;
+    border-color: #3a2d3f;
+}
+
+#mensaje-contenedor {
+    height: 40px;
+    font-weight: bold;
+    font-size: var(--tletra-mensajes);
+    text-align: center;
+}
+
+#mensaje-contenedor.win {
+    color: #4caf50;
+}
+
+#mensaje-contenedor.loss {
+    color: var(--c-primario);
+}
+
+#reset-button {
+    padding: 12px 25px;
+    border-radius: 8px;
+    border: none;
+    background-color: var(--c-primario);
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: var(--tletra-reinicio);
+    font-weight: bold;
+}
+
+#reset-button:hover {
+    background-color: var(--c-secundario);
+}

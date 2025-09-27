@@ -1,18 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>canva</title>
-
-    <script>
-        function regresar() {
-            window.location.href = '../index.html';
-        }
-    </script>
-
+    <title>Juego del Ahorcado</title>
+    <link rel="stylesheet" href="../styles/styles.css">
 </head>
 <body>
-    <button onclick="regresar()">Regresar</button>
+    <div id="main-container">
+        <h1>Juego del Ahorcado</h1>
+        <canvas id="hangman-canvas" width="300" height="350"></canvas>
+        <div id="contenedor-palabras"></div>
+        <div id="mensaje-contenedor"></div>
+        <div id="tecla-contenedor"></div>
+        <button id="reset-button">Jugar de Nuevo</button>
+    </div>
+
+    <script type="module" src="../javaScript/funcionalidad.js"></script>
 </body>
 </html>

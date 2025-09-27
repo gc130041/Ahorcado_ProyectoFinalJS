@@ -1,19 +1,21 @@
+import { Drawer } from './canvas.js';
+
 class Game {
     constructor(drawer) {
         this.drawer = drawer;
-        this.contenedorPalabra = document.getElementById('palabra-contenedor');
+        this.contenedorPalabra = document.getElementById('contenedor-palabras');
         this.contenedorTecla = document.getElementById('tecla-contenedor');
         this.contenedorMensaje = document.getElementById('mensaje-contenedor');
-        
-        this.words = [
+
+        this.palabras = [
             "PALINDROMO", "USUMACINTA", "ESTERNOCLEIDOMASTOIDEO",
             "ONOMATOPEYA", "DANTESCO", "OTORRINOLARINGOLOGO",
             "PARALELEPIPEDO", "ELECTROENCEFALOGRAMA", "ANTICONSTITUCIONALMENTE",
             "HIPOPOTOMONSTROSESQUIPEDALIOFOBIA", "AUTONOMO", "ININTELIGIBLE",
-            "DESOXIRRIBONUCLEICO", "AUTOWIRED", "MURCIELAGO",
+            "DESOXIRRIBONUCLEICO", "FRAMEWORK", "MURCIELAGO",
             "TERMICO", "GRAVITATORIO", "QUIMERA", "TEROPODO", "NICENOCONSTANTINOPOLITANO"
         ];
-        
+
         this.intentos = 7;
         this.palabraSecreta = '';
         this.displayWord = [];
@@ -27,18 +29,12 @@ class Game {
         this.seAcabo = false;
         this.errores = 0;
         this.letrasUsadas.clear();
-        
-        const randomIndex = Math.floor(Math.random() * this.words.length);
-        this.palabraSecreta = this.words[randomIndex];
-
-        this.displayWord = [];
-        for (let i = 0; i < this.palabraSecreta.length; i++) {
-            this.displayWord.push('_');
-        }
-
+        const randomIndex = Math.floor(Math.random() * this.palabras.length);
+        this.palabraSecreta = this.palabras[randomIndex];
+        this.displayWord = Array(this.palabraSecreta.length).fill('_');
         this.resetUI();
         this.updateWordDisplay(this.displayWord);
-        this.createKeyboard(this.handleKeyPress);
+        this.createKeyboard();
         this.drawer.clear();
     }
 
@@ -46,10 +42,8 @@ class Game {
         if (this.seAcabo || this.letrasUsadas.has(letter)) {
             return;
         }
-        
         this.letrasUsadas.add(letter);
         this.disableButton(letter);
-
         let letterFound = false;
         for (let i = 0; i < this.palabraSecreta.length; i++) {
             if (this.palabraSecreta[i] === letter) {
@@ -57,13 +51,12 @@ class Game {
                 letterFound = true;
             }
         }
-
         if (letterFound) {
             this.updateWordDisplay(this.displayWord);
             this.checkWinCondition();
         } else {
             this.errores++;
-            this.drawer.drawPart(this.errores);
+            this.drawer.dibujar(this.errores);
             this.checkLossCondition();
         }
     }
@@ -71,21 +64,20 @@ class Game {
     checkWinCondition() {
         if (!this.displayWord.includes('_')) {
             this.seAcabo = true;
-            this.showMessage('¡Felicidades! Adivinaste la palabra.');
+            this.showMessage('¡Felicidades! Adivinaste la palabra.', 'win');
         }
     }
 
     checkLossCondition() {
         if (this.errores >= this.intentos) {
             this.seAcabo = true;
-            this.showMessage(`Perdiste. La palabra era: ${this.palabraSecreta}`);
+            this.showMessage(`Perdiste. La palabra era: ${this.palabraSecreta}`, 'loss');
         }
     }
 
     createKeyboard() {
         this.contenedorTecla.innerHTML = '';
         const alphabet = 'ABCDEFGHIJKLMNÑOPQRSTUVWXYZ';
-        
         for (let i = 0; i < alphabet.length; i++) {
             const letter = alphabet[i];
             const button = document.createElement('button');
@@ -104,7 +96,7 @@ class Game {
         this.contenedorMensaje.textContent = text;
         this.contenedorMensaje.className = type;
     }
-    
+
     disableButton(letter) {
         const buttons = this.contenedorTecla.getElementsByTagName('button');
         for (let i = 0; i < buttons.length; i++) {
@@ -118,19 +110,13 @@ class Game {
     resetUI() {
         this.contenedorMensaje.textContent = '';
         this.contenedorMensaje.className = '';
-        const buttons = this.contenedorTecla.getElementsByTagName('button');
-        for (let i = 0; i < buttons.length; i++) {
-            buttons[i].disabled = false;
-        }
     }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
     const drawer = new Drawer('hangman-canvas');
     const game = new Game(drawer);
-
     const resetButton = document.getElementById('reset-button');
     resetButton.addEventListener('click', () => game.start());
-
     game.start();
 });
