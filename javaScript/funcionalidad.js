@@ -64,7 +64,7 @@ class Game {
     checkWinCondition() {
         if (!this.displayWord.includes('_')) {
             this.seAcabo = true;
-            this.showMessage('¡Felicidades! Adivinaste la palabra.', 'win');
+            this.showMessage('¡Felicidades! Adivinaste la palabra', 'win');
         }
     }
 

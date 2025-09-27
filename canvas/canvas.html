@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Juego del Ahorcado</title>
     <link rel="stylesheet" href="../styles/styles.css">
+    <script>
+        function volver() {
+            window.location.href = '../index.html';
+        }
+    </script>
 </head>
 <body>
     <div id="main-container">
@@ -14,6 +19,7 @@
         <div id="mensaje-contenedor"></div>
         <div id="tecla-contenedor"></div>
         <button id="reset-button">Jugar de Nuevo</button>
+        <button class="button-back" onclick=volver()>Regresar</button>
     </div>
 
     <script type="module" src="../javaScript/funcionalidad.js"></script>

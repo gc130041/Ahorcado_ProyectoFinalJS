@@ -65,11 +65,15 @@ export class Drawer {
 
     rostro() {
         this.ctx.beginPath();
-        this.ctx.moveTo(190, 125); this.ctx.lineTo(200, 135);
-        this.ctx.moveTo(200, 125); this.ctx.lineTo(190, 135);
-        this.ctx.moveTo(210, 125); this.ctx.lineTo(220, 135);
-        this.ctx.moveTo(220, 125); this.ctx.lineTo(210, 135);
-        this.ctx.arc(205, 145, 10, 0, Math.PI, true);
+
+        this.ctx.moveTo(185, 125); this.ctx.lineTo(195, 135);
+        this.ctx.moveTo(195, 125); this.ctx.lineTo(185, 135);
+        this.ctx.moveTo(205, 125); this.ctx.lineTo(215, 135);
+        this.ctx.moveTo(215, 125); this.ctx.lineTo(205, 135);
+        this.ctx.stroke();
+
+        this.ctx.beginPath();
+        this.ctx.arc(200, 148, 8, 0, Math.PI, true);
         this.ctx.stroke();
     }
 
