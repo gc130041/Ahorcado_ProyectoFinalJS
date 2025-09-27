@@ -8,11 +8,12 @@ class Game {
         this.contenedorMensaje = document.getElementById('mensaje-contenedor');
 
         this.palabras = [
-            "VARIABLE", "FUNCION", "ARREGLO", "OBJETO", "SCRUM", 
-            "MODULO", "EVENTO", "COMPONENTE", "HOSTING", "CLOSURE",
-            "BEAN", "CONTEXTO", "ENTIDAD", "SERVICIO", "TOMCAT",
-            "REPOSITORIO", "CONTROLADOR", "INYECCION", "MAVEN", "GRADLE",
-            "SERVLET", "HIBERNATE", "PERSISTENCIA", "JAKARTA", "PATRONES"
+            "PALINDROMO", "USUMACINTA", "ESTERNOCLEIDOMASTOIDEO",
+            "ONOMATOPEYA", "DANTESCO", "OTORRINOLARINGOLOGO",
+            "PARALELEPIPEDO", "ELECTROENCEFALOGRAMA", "ANTICONSTITUCIONALMENTE",
+            "HIPOPOTOMONSTROSESQUIPEDALIOFOBIA", "AUTONOMO", "ININTELIGIBLE",
+            "DESOXIRRIBONUCLEICO", "AUTOWIRED", "MURCIELAGO",
+            "TERMICO", "GRAVITATORIO", "QUIMERA", "TEROPODO", "NICENOCONSTANTINOPOLITANO"
         ];
 
         this.intentos = 7;
