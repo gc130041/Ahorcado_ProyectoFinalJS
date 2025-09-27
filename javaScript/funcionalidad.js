@@ -63,7 +63,15 @@ class Game {
     checkWinCondition() {
         if (!this.displayWord.includes('_')) {
             this.seAcabo = true;
-            this.showMessage('¡Felicidades! Adivinaste la palabra', 'win');
+            
+            const intentosRestantes = this.intentos - this.errores;
+            let mensajeFinal = `¡Felicidades! Adivinaste. Te quedaban ${intentosRestantes} intentos`;
+
+            if (intentosRestantes === 1) {
+                mensajeFinal = `¡Felicidades! Adivinaste. Te quedaba 1 intento.`;
+            }
+            
+            this.showMessage(mensajeFinal, 'win');
         }
     }
 
